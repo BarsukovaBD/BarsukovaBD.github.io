@@ -238,6 +238,7 @@ nav .menu li:hover{
 .circles{
 display: flex;
 align-items: center;
+justify-content: flex-end;
 }
 .circle{
 border-radius: 50%;
