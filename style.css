@@ -262,3 +262,9 @@ border: 1px solid black;
 .job img{
     width: 100%;
 }
+form{
+background-color:#ffffff;
+width:70%;
+margin:0 auto;
+padding:15px;
+}
