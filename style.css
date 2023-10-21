@@ -265,6 +265,7 @@ border: 1px solid black;
 form{
 background-color:#ffffff;
 width:70%;
+height: 70vh;
 margin:0 auto;
 padding:15px;
 }
