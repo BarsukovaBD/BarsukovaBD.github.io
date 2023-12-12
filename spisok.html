@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PORTFOLIO | Резюме</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container inner_header flex space-between items-center">
+        <h1>Portfolio</h1>
+    </div>
+</header>
+<nav>
+    <ul class="container menu flex items-center">
+        <li><a href="index.html">О себе</a></li>
+        <li><a href="resume.html">Резюме</a></li>
+        <li><a href="jobs.html">Мои работы</a></li>
+        <li><a href="contact.html">Обратная связь</a></li>
+        <li><a href="spisok.html">Cписок задач</a></li>
+    </ul>
+</nav>
+<main>
+    <section class="f_section">
+        <div class="conteiner">
+            <div class="section_title">
+                <h1>Список задач</h1>
+            </div>
+            <div class="section_main">
+                <form id="task" action="">
+                    <div class="list_header">
+                        <input type="text" id="inputText" placeholder="Задача...">
+                        <span onclick="newElement()" class="addButton">Добавить</span>
+                    </div>
+                    <ul class="list">
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </section> 
+    <div class="conteiner">
+        <div class="section_title">
+            <h1>Таймер</h1>
+        </div>
+        <div class="section_main">
+            <div class="timer">
+                <div class="time_buttons"></div>
+                <div class="time">
+                    <b class="time_display_min">00</b>
+                    <p class="time_display_sep">:</p>
+                    <b class="time_display_sec">00</b>
+                </div>
+                <div class="time_action_buttons">
+                    <button class="time_action_button">Старт</button>
+                    <button class="time_action_button">Стоп</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<footer>
+
+</main>
+
+<footer class="footer">
+<div class="container inner_footer">
+    <h1>Portfolio</h1>
+    <p>Сайт разработан Vasilisa, Copyright © 2023</p>
+</div>
+</footer>
+
+</body>
+<script src="tasks.js"></script>
+<script src="timer.js"></script>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PORTFOLIO | Резюме</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container inner_header flex space-between items-center">
+        <h1>Portfolio</h1>
+    </div>
+</header>
+<nav>
+    <ul class="container menu flex items-center">
+        <li><a href="index.html">О себе</a></li>
+        <li><a href="resume.html">Резюме</a></li>
+        <li><a href="jobs.html">Мои работы</a></li>
+        <li><a href="contact.html">Обратная связь</a></li>
+        <li><a href="spisok.html">Cписок задач</a></li>
+    </ul>
+</nav>
+<main>
+<section>
+<form id="avtor">
+    <div id="block_info">
+        <h3>Информация</h3>
+        <div id="info_inputs">
+            <p class="text_name">Введите имя: <input type="text" id="textName"></p>
+            <p class="text_email">Введите e-mail: <input type="email"></p>
+            <p class="text_tel">Введите телефон: <input type="tel"></p>
+            <p class="text_data">Введите дату: <input type="date"></p>
+            <p class="text_url">Введите URL: <input type="url"></p>
+        </div>
+    </div>
+    <div id="block_radio">
+        <h3>Добавить способ ответа</h3>
+        <div id="radios">
+            <label><input type="radio" value="simple" name="1">Сообщение</label>
+            <p><input type="radio" value="e-mail" name="1">e-mail</p>
+            <p><input type="radio" value="tel" name="1">Телефон</p>
+            <p><input type="radio" value="data" name="1">Назначить встречу</p>
+            <p><input type="radio" value="url" name="1">URL</p>
+        </div>
+    </div>
+    <div id="block_select">
+        <h3>Укажите тему</h3>
+        <select name="" id="select">
+            <option selected="selected" value="without">Без темы</option>
+            <option value="learning">Учёба</option>
+        </select>
+    </div>
+    <div id="block_checkbox">
+        <h3>Что по учёбе</h3>
+        <div>
+            <p><input type="checkbox"> Учеба</p>
+            <p><input type="checkbox"> Учеба</p>
+            <p><input type="checkbox"> Учеба</p>
+            <p><input type="checkbox"> Учеба</p>
+        </div>
+    </div>
+    <div id="block_textarea">
+        <h3>Ваше сообщение</h3>
+        <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+    </div>
+    <input name="button" type="submit" value="Отправить">
+</form>
+
+<footer>
+
+</main>
+
+<footer class="footer">
+<div class="container inner_footer">
+    <h1>Portfolio</h1>
+    <p>Сайт разработан Vasilisa, Copyright © 2023</p>
+</div>
+</footer>
+
+</body>
+<script src="script.js"></script>
+</html>
