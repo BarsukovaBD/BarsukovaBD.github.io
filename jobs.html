@@ -63,25 +63,18 @@
     </section>
     
     <section>
-        <ul class="slider_picture">
-            <li>
-                <input type="radio" id="slide1" name="slide" checked="">
-                <label for="slide1"></label>
-                <img src="black_cat.jpg" alt=" ">
-            </li>
-            <li>
-                <input type="radio" id="slide2" name="slide">
-                <label for="slide2"></label>
-                <img src="white_cat.jpg" alt=" ">
-            </li>
-            <li>
-                <input type="radio" id="slide3" name="slide">
-                <label for="slide3"></label>
-                <img src="gray_cat.jpg" alt=" ">
-            </li>
-            
-        </ul>
-
+        <div class="container slider">
+            <div class="slides">
+                <div class="slide"><img src="black_cat.jpg" /></div>
+                <div class="slide"><img src="gray_cat.jpg" /></div>
+                <div class="slide"><img src="me.jpg" /></div>
+                <div class="slide"><img src="white_cat.jpg" /></div>
+            </div>
+        </div>
+        <div class="slider-btns container">
+            <button class="slider-btn slide-prev" onclick="slide(false)" >←</button>
+            <button class="slider-btn slide-next" onclick="slide(true)" >→</button>
+        </div>
     </section>
     
     <footer>
@@ -95,6 +88,6 @@
         <p>Сайт разработан Vasilisa, Copyright © 2023</p>
     </div>
 </footer>
-
+<script src="jobs.js" ></script>
 </body>
 </html>

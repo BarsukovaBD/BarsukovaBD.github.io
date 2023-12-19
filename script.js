@@ -1,170 +1,98 @@
-{/* <script srs = "file:///Users/vasiliskabarsukova/Downloads/BarsukovaBD.github-5.io-main/index.html" defer> */}
-const form = document.getElementById('avtor');
-
-let checkboxDiv = document.getElementById('block_checkbox');
-checkboxDiv.classList.add('hidden_block');
-
-form.addEventListener('submit', function(e){
-    e.preventDefault();
-    let textName = document.getElementById('textName');
-    let textArea = document.getElementById('textarea');
-    let isValid = true;
-    isValid = isNameValid() & isMessageValid() & isEmailValid() & isDataValid() & isTelValid() & isURLValid();
-    if (isValid){
-        e.currentTarget.submit();
+document.querySelectorAll('.form-radio').forEach(function (radio) {
+    const radioDepends = {
+        email: document.querySelector('.email'),
+        phone: document.querySelector('.phone'),
+        another: document.querySelector('.url'),
+        met: document.querySelector('.date'),
     }
-});
 
-let radios = document.getElementById('radios').children;
-for (let i = 0; i < radios.length; i++) {
-    const element = radios[i].children[0];
-    switch (element.value) {
-        case 'simple':
-            element.addEventListener('change', hiddenSimple);
-            break;
-        case 'e-mail':
-            element.addEventListener('change', hiddenEmail);
-            break;
-        case 'tel':
-            element.addEventListener('change', hiddenTel);
-            break;
-        case 'data':
-            element.addEventListener('change', hiddenData);
-            break;
-        case 'url':
-            element.addEventListener('change', hiddenURL);
-            break;
-        default:
-            break;
+    radio.addEventListener('click', function (e) {
+        const value = this.value
+        Object.keys(radioDepends).forEach(function (dependKey) {
+            const depend = radioDepends[dependKey]
+            depend?.classList.add('hidden')
+            depend?.classList.remove('validate')
+        })
+
+        radioDepends[value]?.classList.remove('hidden')
+        radioDepends[value]?.classList.add('validate')
+
+    })
+})
+
+const formSectionSelect = document.querySelector('.form-select')
+if (formSectionSelect) {
+    formSectionSelect.addEventListener('change', function () {
+        const value = this.value
+        const education = document.querySelector('.form-edu')
+        if (value == "education") {
+            education.classList.remove('hidden')
+        } else {
+            education.classList.add('hidden')
+        }
+    })
+}
+
+
+
+const form = document.querySelector('form')
+if (form) {
+    const raiseValidateError = (msg, input) => {
+        input.classList.add('error')
+        input.classList.remove('success')
+        const errorItem = document.createElement('li')
+        errorItem.classList.add('error-item')
+        errorItem.textContent = msg
+        document.querySelector('.errors-list').append(errorItem)
+        console.log(input)
     }
-}
+    const lettersRegexp = /^[a-zа-яё]+$/i
+    const emailRegex = /^([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)$/
+    const phoneRegex = /^\+7\d{10}$/
+    form.addEventListener('submit', function (e) {
+        document.querySelectorAll('.error-item').forEach(er => er.remove())
+        e.preventDefault()
+        let canSubmit = true
+        const toValidate = document.querySelectorAll('.validate')
+        toValidate.forEach(function (item) {
+            item.classList.remove('error')
+            item.classList.add('success')
+            const value = item.value
+            if (item.classList.contains('required')) {
+                if (value === "") {
+                    raiseValidateError("Заполните необходимые", item)
+                    canSubmit = false
+                }
+            }
+            if (item.classList.contains('lettersRegexp')) {
+                if (!lettersRegexp.test(value)) {
+                    raiseValidateError("Какое-то поле должно содержать только буквы", item)
+                    canSubmit = false
+                }
+            }
+            if (item.classList.contains('emailRegexp')) {
+                if (!emailRegex.test(value)) {
+                    raiseValidateError("Какое-то поле должно соответствовать формату Email", item)
+                    canSubmit = false
+                }
+            }
+            if (item.classList.contains('phoneRegexp')) {
+                if (!phoneRegex.test(value)) {
+                    raiseValidateError("Какое-то поле должно соответствовать формату номера телефона +7", item)
+                    canSubmit = false
+                }
+            }
+        })
+        if(canSubmit){
+            form.submit()
+        }
+    })
 
-function hiddenSimple(){
-    let inputs = document.getElementById('block_info').children[1].children;
-    inputs[1].classList.add('hidden_block');
-    inputs[2].classList.add('hidden_block');
-    inputs[3].classList.add('hidden_block');
-    inputs[4].classList.add('hidden_block');
-}
+    // const clearBtn = document.querySelector('.form__btns-clear')
 
-function hiddenEmail(){
-    let inputs = document.getElementById('block_info').children[1].children;
-    inputs[1].classList.remove('hidden_block');
-    inputs[2].classList.add('hidden_block');
-    inputs[3].classList.add('hidden_block');
-    inputs[4].classList.add('hidden_block');
-}
+    // clearBtn.addEventListener('click', function () {
+    //     const inputs = form.querySelectorAll('input, textarea')
+    //     inputs.forEach(input => input.value = "")
+    // })
 
-function hiddenTel(){
-    let inputs = document.getElementById('block_info').children[1].children;
-    inputs[1].classList.add('hidden_block');
-    inputs[2].classList.remove('hidden_block');
-    inputs[3].classList.add('hidden_block');
-    inputs[4].classList.add('hidden_block');
-}
-
-function hiddenData(){
-    let inputs = document.getElementById('block_info').children[1].children;
-    inputs[1].classList.remove('hidden_block');
-    inputs[2].classList.remove('hidden_block');
-    inputs[3].classList.remove('hidden_block');
-    inputs[4].classList.add('hidden_block');
-}
-
-function hiddenURL(){
-    let inputs = document.getElementById('block_info').children[1].children;
-    inputs[1].classList.add('hidden_block');
-    inputs[2].classList.add('hidden_block');
-    inputs[3].classList.add('hidden_block');
-    inputs[4].classList.remove('hidden_block');
-}
-
-let select = document.getElementById('select');
-select.addEventListener('change', function(){
-    switch (this.value) {
-        case 'without':
-            checkboxDiv.classList.add('hidden_block');
-            break;
-        case 'learning':
-            checkboxDiv.classList.remove('hidden_block');
-            break;
-        default:
-            break;
-    }
-});
-
-select.selectedIndex = 0;
-radios[0].children[0].checked = true;
-hiddenSimple();
-
-function isNameValid(){
-    const name = document.getElementById("textName");
-
-    if (name.value.length === 0) {
-        name.classList.add('error_block');
-        return false;
-    }
-    name.classList.remove('error_block');
-    return true;
-}
-
-function isMessageValid(){
-    const message = document.getElementById("textarea");
-
-    if (message.value.length === 0) {
-        message.classList.add('error_block');
-        return false;
-    }
-    message.classList.remove('error_block');
-    return true;
-}
-
-function isTelValid(){
-    let reg = /^8\d{10}/;
-
-    const phone = document.getElementById("tel");
-
-    if (!phone.parentElement.classList.contains('hidden_block') 
-            && ((phone.value.length === 0) 
-            || !reg.test(phone.value))) {
-        phone.classList.add('error_block');
-        return false;
-    }
-    phone.classList.remove('error_block');
-    return true;
-}
-
-function isEmailValid(){
-    let reg = /[A-Za-z0-9]+@[a-z]+\.[a-z]/;
-
-    const email = document.getElementById("email");
-
-    if (!email.parentElement.classList.contains('hidden_block') 
-            && ((email.value.length === 0) 
-            || !reg.test(email.value))) {
-        email.classList.add('error_block');
-        return false;
-    }
-    email.classList.remove('error_block');
-    return true;
-}
-function isDataValid(){
-    const data = document.getElementById("data");
-
-    if (!data.parentElement.classList.contains('hidden_block') && ((data.value.length === 0))) {
-        data.classList.add('error_block');
-        return false;
-    }
-    data.classList.remove('error_block');
-    return true;
-}
-function isURLValid(){
-    const url = document.getElementById("url");
-
-    if (!url.parentElement.classList.contains('hidden_block') && ((url.value.length === 0))) {
-        url.classList.add('error_block');
-        return false;
-    }
-    url.classList.remove('error_block');
-    return true;
 }

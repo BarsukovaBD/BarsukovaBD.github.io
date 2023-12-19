@@ -1,82 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>PORTFOLIO | Резюме</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contactForm.css">
 </head>
+
 <body>
-<header>
-    <div class="container inner_header flex space-between items-center">
-        <h1>Portfolio</h1>
-    </div>
-</header>
-<nav>
-    <ul class="container menu flex items-center">
-        <li><a href="index.html">О себе</a></li>
-        <li><a href="resume.html">Резюме</a></li>
-        <li><a href="jobs.html">Мои работы</a></li>
-        <li><a href="contact.html">Обратная связь</a></li>
-        <li><a href="spisok.html">Cписок задач</a></li>
-    </ul>
-</nav>
-<main>
-<section>
-<form id="avtor">
-    <div id="block_info">
-        <h3>Информация</h3>
-        <div id="info_inputs">
-            <p class="text_name">Введите имя: <input type="text" id="textName"></p>
-            <p class="text_email">Введите e-mail: <input type="email"></p>
-            <p class="text_tel">Введите телефон: <input type="tel"></p>
-            <p class="text_data">Введите дату: <input type="date"></p>
-            <p class="text_url">Введите URL: <input type="url"></p>
+    <header>
+        <div class="container inner_header flex space-between items-center">
+            <h1>Portfolio</h1>
         </div>
-    </div>
-    <div id="block_radio">
-        <h3>Добавить способ ответа</h3>
-        <div id="radios">
-            <label><input type="radio" value="simple" name="1">Сообщение</label>
-            <p><input type="radio" value="e-mail" name="1">e-mail</p>
-            <p><input type="radio" value="tel" name="1">Телефон</p>
-            <p><input type="radio" value="data" name="1">Назначить встречу</p>
-            <p><input type="radio" value="url" name="1">URL</p>
+    </header>
+    <nav>
+        <ul class="container menu flex items-center">
+            <li><a href="index.html">О себе</a></li>
+            <li><a href="resume.html">Резюме</a></li>
+            <li><a href="jobs.html">Мои работы</a></li>
+            <li><a href="contact.html">Обратная связь</a></li>
+            <li><a href="spisok.html">Cписок задач</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <form id="avtor" class="form" method="get">
+                <ul class="errors-list">
+                </ul>
+                <div class="form-item">
+                    <input class="form-input validate lettersRegexp " placeholder="Имя" />
+                </div>
+                <div class="form-item">
+                    <input class="form-input phone validate phoneRegexp hidden" placeholder="Номер телефона" />
+                    <input class="form-input email validate emailRegexp" placeholder="Почта"/>
+                    <input class="form-input url validate required hidden" placeholder="URL" />
+                    <input class="form-input date validate required hidden" placeholder="Дата" />
+                </div>
+                <div class="form-item">
+                    <label><input value="met" class="form-radio" type="radio" name="radio" /> Назначить встречу</label>
+                    <label><input value="phone" class="form-radio" type="radio" name="radio" /> Телефон</label>
+                    <label><input value="email" class="form-radio" type="radio" name="radio" checked /> Эл. Почта</label>
+                    <label><input value="another" class="form-radio" type="radio" name="radio" /> Другое</label>
+                    <label><input value="skip" class="form-radio" type="radio" name="radio" /> Не надо отвечать</label>
+                </div>
+                <div class="form-item" >
+                    <select class="form-select">
+                        <option value="">Что то</option>
+                        <option value="education" >Учеба</option>
+                    </select>
+                </div>
+                <div class="form-item form-edu hidden">
+                    <label><input class="form-checkbox" type="checkbox" /> Нужна помощь</label>
+                    <label><input class="form-checkbox" type="checkbox" /> Сотрудничество по заданию</label>
+                    <label><input class="form-checkbox" type="checkbox" /> Ответы и готовые задания</label>
+                    <label><input class="form-checkbox" type="checkbox" /> Подготовка к сессии</label>
+                </div>
+                <div class="form-item" >
+                    <textarea class="form-textarea validate required" placeholder="Ваше сообщение" ></textarea>
+                </div>
+                <button class="form-btn form-btn-success">Отправить</button>
+            </form>
+
+
+    </main>
+
+    <footer class="footer">
+        <div class="container inner_footer">
+            <h1>Portfolio</h1>
+            <p>Сайт разработан Vasilisa, Copyright © 2023</p>
         </div>
-    </div>
-    <div id="block_select">
-        <h3>Укажите тему</h3>
-        <select name="" id="select">
-            <option selected="selected" value="without">Без темы</option>
-            <option value="learning">Учёба</option>
-        </select>
-    </div>
-    <div id="block_checkbox">
-        <h3>Что по учёбе</h3>
-        <div>
-            <p><input type="checkbox"> Учеба</p>
-            <p><input type="checkbox"> Учеба</p>
-            <p><input type="checkbox"> Учеба</p>
-            <p><input type="checkbox"> Учеба</p>
-        </div>
-    </div>
-    <div id="block_textarea">
-        <h3>Ваше сообщение</h3>
-        <textarea name="" id="textarea" cols="30" rows="10"></textarea>
-    </div>
-    <input name="button" type="submit" value="Отправить">
-</form>
-
-<footer>
-
-</main>
-
-<footer class="footer">
-<div class="container inner_footer">
-    <h1>Portfolio</h1>
-    <p>Сайт разработан Vasilisa, Copyright © 2023</p>
-</div>
-</footer>
+    </footer>
 
 </body>
 <script src="script.js"></script>
+
 </html>

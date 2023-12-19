@@ -40,11 +40,13 @@ const stopButton = actionButtons.children[1];
 let timerInterval = null;
 let timerStop = null;
 
+let localTime = localStorage.getItem('timerTime') || 10
+
 startButton.addEventListener('click', function(){
     stopButton.removeAttribute('disabled');
     stopButton.textContent = "Стоп";
     isStop = false;
-    let time = Number(minuts_display.textContent) * 60 + Number(seconds_display.textContent)
+    let time = localTime - 1
 
     timerInterval = setInterval(()=>{
         let currentTime = Number(minuts_display.textContent) * 60 + Number(seconds_display.textContent)
@@ -82,10 +84,12 @@ stopButton.addEventListener('click', function(){
 function setTime(time){
     let minuts = Math.floor(Number(time) / 60);
     let seconds = Number(time) % 60;
-
+    localTime = minuts * 60 + seconds
+    localStorage.setItem('timerTime', localTime)
+    console.log(localTime)
     minuts_display.textContent = minuts < 10 ? `0${minuts}` : minuts;
     seconds_display.textContent = seconds < 10 ? `0${seconds}` : seconds;
 }
 
 currentTimeDelay = delayNames[0][1];
-setTime(delayNames[0][1]);
+setTime(localTime);

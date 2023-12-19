@@ -1,16 +1,15 @@
-<script srs = "file:///Users/vasiliskabarsukova/Downloads/BarsukovaBD.github-5.io-main/index.html" defer>
-  const form = document.getElementById('avtor');
+const form = document.getElementById('avtor');
 
 let checkboxDiv = document.getElementById('block_checkbox');
 checkboxDiv.classList.add('hidden_block');
 
-form.addEventListener('submit', function(e){
+form.addEventListener('submit', function (e) {
     e.preventDefault();
     let textName = document.getElementById('textName');
     let textArea = document.getElementById('textarea');
     let isValid = true;
     isValid = isNameValid() && isMessageValid() && isEmailValid() && isDataValid() && isTelValid() && isURLValid();
-    if (isValid){
+    if (isValid) {
         e.currentTarget.submit();
     }
 });
@@ -39,7 +38,7 @@ for (let i = 0; i < radios.length; i++) {
     }
 }
 
-function hiddenSimple(){
+function hiddenSimple() {
     let inputs = document.getElementById('block_info').children[1].children;
     inputs[1].classList.add('hidden_block');
     inputs[2].classList.add('hidden_block');
@@ -47,7 +46,7 @@ function hiddenSimple(){
     inputs[4].classList.add('hidden_block');
 }
 
-function hiddenEmail(){
+function hiddenEmail() {
     let inputs = document.getElementById('block_info').children[1].children;
     inputs[1].classList.remove('hidden_block');
     inputs[2].classList.add('hidden_block');
@@ -55,7 +54,7 @@ function hiddenEmail(){
     inputs[4].classList.add('hidden_block');
 }
 
-function hiddenTel(){
+function hiddenTel() {
     let inputs = document.getElementById('block_info').children[1].children;
     inputs[1].classList.add('hidden_block');
     inputs[2].classList.remove('hidden_block');
@@ -63,7 +62,7 @@ function hiddenTel(){
     inputs[4].classList.add('hidden_block');
 }
 
-function hiddenData(){
+function hiddenData() {
     let inputs = document.getElementById('block_info').children[1].children;
     inputs[1].classList.remove('hidden_block');
     inputs[2].classList.remove('hidden_block');
@@ -71,7 +70,7 @@ function hiddenData(){
     inputs[4].classList.add('hidden_block');
 }
 
-function hiddenURL(){
+function hiddenURL() {
     let inputs = document.getElementById('block_info').children[1].children;
     inputs[1].classList.add('hidden_block');
     inputs[2].classList.add('hidden_block');
@@ -80,7 +79,7 @@ function hiddenURL(){
 }
 
 let select = document.getElementById('select');
-select.addEventListener('change', function(){
+select.addEventListener('change', function () {
     switch (this.value) {
         case 'without':
             checkboxDiv.classList.add('hidden_block');
@@ -97,7 +96,7 @@ select.selectedIndex = 0;
 radios[0].children[0].checked = true;
 hiddenSimple();
 
-function isNameValid(){
+function isNameValid() {
 
     if (true) {
         return false
@@ -105,21 +104,21 @@ function isNameValid(){
     return true;
 }
 
-function isMessageValid(){
+function isMessageValid() {
     return true;
 }
 
-function isTelValid(){
+function isTelValid() {
     return true;
 }
 
-function isEmailValid(){
+function isEmailValid() {
     return true;
 }
-function isDataValid(){
+function isDataValid() {
     return true;
 }
-function isURLValid(){
+function isURLValid() {
     return true;
-}</script>
+}</script >
 

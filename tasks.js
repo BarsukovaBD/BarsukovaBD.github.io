@@ -1,9 +1,20 @@
 const form = document.getElementById('task');
 
-for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(localStorage.length-1-i)
-    const element = localStorage.getItem(key);
-    createElement(key, element)
+const GetData = (key) => {
+    const ls = localStorage.getItem(key)
+    if(ls) return JSON.parse(ls)
+    return null
+}
+
+const SaveData = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value))
+}
+
+const startData = GetData('tasks')
+if(startData){
+    startData.forEach(function({id, text}){
+        createElement(id, text)
+    })
 }
 
 function newElement(){
@@ -12,9 +23,22 @@ function newElement(){
         alert("Введите значение");
         return;
     }
-    time = Date.now();
+    const time = Date.now();
+    const item = {text, id:time}
+    
+    let data = GetData('tasks')
+    if(!data){
+        data = []   
+    }
+    data.push(item)
+    SaveData('tasks', data)
     createElement(time, text);
-    localStorage.setItem(time, text);
+}
+
+function RemoveItem(index, item){
+    item.remove()
+    const newData = GetData('tasks').filter(item => item.id !== index)
+    SaveData('tasks', newData)
 }
 
 function createElement(index, text) {
@@ -26,10 +50,12 @@ function createElement(index, text) {
     });
     let deleteButton = document.createElement("span");
     deleteButton.innerText = 'ʘ'
-    deleteButton.addEventListener('click', function (){
-        localStorage.removeItem(`${task.id}`);
-        task.remove();
-    });
+    deleteButton.onclick = () => {RemoveItem(index, task)}
     task.appendChild(deleteButton);
     form.querySelector(".list").appendChild(task)
+}
+
+function clearList(){
+    SaveData('tasks', [])
+    document.querySelectorAll('.list li').forEach(item => item.remove())
 }
